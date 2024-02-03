@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
-import 'package:weather_app/views/search_view.dart';
+import 'package:weather_app/widgets/custom_icon_button.dart';
+import 'package:weather_app/widgets/custom_title.dart';
 import 'package:weather_app/widgets/no_weather_body.dart';
 import 'package:weather_app/widgets/weather_info_body.dart';
 
@@ -13,29 +14,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Text(
-            'Weather App',
-            style: TextStyle(
-                color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),
-          ),
-        ),
+        title:  customTitle(title: 'Weather App'),
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const SearchView(),
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.search,
-              color: Colors.white,
-              size: 27,
-            ),
-          ),
+          customIconButton(context),
         ],
       ),
       body: BlocBuilder<GetWeatherCubit, WeatherStates>(
@@ -56,7 +37,7 @@ class HomeView extends StatelessWidget {
           } else {
             return const Center(
               child: Text(
-                'Oops there was an error, try later !',
+                'Oops there was an error, please try later !',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
             );
@@ -65,4 +46,7 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
+
+
+
 }
