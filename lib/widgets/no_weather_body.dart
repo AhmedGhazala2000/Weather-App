@@ -9,22 +9,14 @@ class NoWeatherBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'there is no weather 😔 start',
-            style: TextStyle(
-              fontSize: 30,
-            ),
+      child: Center(
+        child: Text(
+          'there is no weather 😔 start \n searching now 🔍',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
           ),
-          Text(
-            'searching now 🔍',
-            style: TextStyle(
-              fontSize: 30,
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
