@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/main.dart';
+import 'package:weather_app/widgets/custom_get_color.dart';
 
 class WeatherInfoBody extends StatelessWidget {
   const WeatherInfoBody({Key? key}) : super(key: key);
@@ -51,7 +51,7 @@ class WeatherInfoBody extends StatelessWidget {
                     ? weatherModel.image
                     : 'https:${weatherModel.image}'),
                 Text(
-                  weatherModel.avgTemp.round().toString(),
+                  weatherModel.currentTemp.round().toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 32,
@@ -60,13 +60,13 @@ class WeatherInfoBody extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      'Maxtemp: ${weatherModel.maxTemp.round()}',
+                      'MaxTemp: ${weatherModel.maxTemp.round()}',
                       style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
                     Text(
-                      'Mintemp: ${weatherModel.minTemp.round()}',
+                      'MinTemp: ${weatherModel.minTemp.round()}',
                       style: const TextStyle(
                         fontSize: 16,
                       ),
