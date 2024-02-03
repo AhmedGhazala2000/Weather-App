@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:weather_app/models/weather_model.dart';
 
@@ -19,7 +21,8 @@ class WeatherServices {
           'Oops there was an error, check the connection and try again.';
       throw Exception(errMessage);
     } catch (e) {
-      throw Exception(e.toString());
+      log(e.toString());
+      throw Exception('Oops there was an error, please try later !');
     }
   }
 }
