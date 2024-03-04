@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-MaterialColor getThemeColor(String? color) {
-  if (color == null) {
+MaterialColor getThemeColor({String? weatherCondition}) {
+  if (weatherCondition == null) {
     return Colors.blue;
   }
-  switch (color.toLowerCase()) {
+  switch (weatherCondition.toLowerCase()) {
     case 'sunny':
       return Colors.orange;
     case 'partly cloudy':

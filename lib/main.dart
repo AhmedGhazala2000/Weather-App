@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
 import 'package:weather_app/views/home_view.dart';
-import 'package:weather_app/widgets/custom_get_color.dart';
+import 'package:weather_app/widgets/get_color_func.dart';
 
 void main() {
   runApp(const WeatherApp());
@@ -22,7 +22,7 @@ class WeatherApp extends StatelessWidget {
             theme: ThemeData(
               useMaterial3: false,
               primarySwatch: getThemeColor(
-                BlocProvider.of<GetWeatherCubit>(context)
+                weatherCondition: BlocProvider.of<GetWeatherCubit>(context)
                     .weatherModel
                     ?.weatherCondition,
               ),
@@ -35,4 +35,3 @@ class WeatherApp extends StatelessWidget {
     );
   }
 }
-

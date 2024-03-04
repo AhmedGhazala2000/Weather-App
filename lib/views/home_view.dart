@@ -4,6 +4,7 @@ import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
 import 'package:weather_app/widgets/custom_icon_button.dart';
 import 'package:weather_app/widgets/custom_title.dart';
+import 'package:weather_app/widgets/error_text.dart';
 import 'package:weather_app/widgets/no_weather_body.dart';
 import 'package:weather_app/widgets/weather_info_body.dart';
 
@@ -14,7 +15,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  customTitle(title: 'Weather App'),
+        title: customTitle(title: 'Weather App'),
         actions: [
           customIconButton(context),
         ],
@@ -26,27 +27,12 @@ class HomeView extends StatelessWidget {
           } else if (state is WeatherLoadedState) {
             return WeatherInfoBody();
           } else if (state is WeatherFailureState) {
-            return Center(
-              child: Text(
-                state.errMessage,
-                textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              ),
-            );
+            return buildErrorText(text: state.errMessage);
           } else {
-            return const Center(
-              child: Text(
-                'Oops there was an error, please try later !',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              ),
-            );
+            return buildErrorText();
           }
         },
       ),
     );
   }
-
-
-
 }

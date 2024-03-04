@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/widgets/custom_get_color.dart';
+import 'package:weather_app/widgets/get_color_func.dart';
 
 class WeatherInfoBody extends StatelessWidget {
   const WeatherInfoBody({Key? key}) : super(key: key);
@@ -15,9 +15,11 @@ class WeatherInfoBody extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              getThemeColor(weatherModel.weatherCondition),
-              getThemeColor(weatherModel.weatherCondition)[300]!,
-              getThemeColor(weatherModel.weatherCondition)[100]!,
+              getThemeColor(weatherCondition: weatherModel.weatherCondition),
+              getThemeColor(
+                  weatherCondition: weatherModel.weatherCondition)[300]!,
+              getThemeColor(
+                  weatherCondition: weatherModel.weatherCondition)[100]!,
             ]),
       ),
       child: Padding(
