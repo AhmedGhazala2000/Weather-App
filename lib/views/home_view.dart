@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: customTitle(context,title: 'Weather App'),
+        title: customTitle(context, title: 'Weather App'),
         actions: [
           customIconButton(context),
         ],
@@ -25,10 +25,12 @@ class HomeView extends StatelessWidget {
         builder: (context, state) {
           if (state is WeatherInitialState) {
             return const NoWeatherBody();
-          } else if (state is WeatherLoadedState) {
-            return WeatherInfoBody();
+          } else if (state is WeatherSuccessState) {
+            return const WeatherInfoBody();
+          } else if (state is WeatherLoadingState) {
+            return const Center(child: CircularProgressIndicator());
           } else if (state is WeatherFailureState) {
-            return buildErrorText(context,text: state.errMessage);
+            return buildErrorText(context, text: state.errMessage);
           } else {
             return buildErrorText(context);
           }
