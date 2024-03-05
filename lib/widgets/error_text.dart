@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/utils/responsive_font_size.dart';
 
-buildErrorText({String? text}) {
+buildErrorText(BuildContext context, {String? text}) {
   return Center(
     child: Text(
       text ?? 'Oops there was an error, please try later !',
       textAlign: TextAlign.center,
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+      style: TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 20),
+        fontWeight: FontWeight.w500,
+      ),
     ),
   );
 }

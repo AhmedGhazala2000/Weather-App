@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/utils/responsive_font_size.dart';
 
 class NoWeatherBody extends StatelessWidget {
   const NoWeatherBody({
@@ -7,14 +8,16 @@ class NoWeatherBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.sizeOf(context).width * .03,
+      ),
       child: Center(
         child: Text(
-          'there is no weather 😔 start \n searching now 🔍',
+          'There is no weather 😔 Start \n searching now 🔍',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 30,
+            fontSize: getResponsiveFontSize(context, fontSize: 30),
           ),
         ),
       ),

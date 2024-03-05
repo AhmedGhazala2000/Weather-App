@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
@@ -6,7 +7,14 @@ import 'package:weather_app/views/home_view.dart';
 import 'package:weather_app/widgets/get_color_func.dart';
 
 void main() {
-  runApp(const WeatherApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) {
+        return const WeatherApp();
+      },
+    ),
+  );
 }
 
 class WeatherApp extends StatelessWidget {
@@ -28,6 +36,8 @@ class WeatherApp extends StatelessWidget {
               ),
             ),
             debugShowCheckedModeBanner: false,
+            locale: DevicePreview.locale(context),
+            builder: DevicePreview.appBuilder,
             home: const HomeView(),
           );
         },

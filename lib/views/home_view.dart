@@ -15,7 +15,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: customTitle(title: 'Weather App'),
+        centerTitle: false,
+        title: customTitle(context,title: 'Weather App'),
         actions: [
           customIconButton(context),
         ],
@@ -27,9 +28,9 @@ class HomeView extends StatelessWidget {
           } else if (state is WeatherLoadedState) {
             return WeatherInfoBody();
           } else if (state is WeatherFailureState) {
-            return buildErrorText(text: state.errMessage);
+            return buildErrorText(context,text: state.errMessage);
           } else {
-            return buildErrorText();
+            return buildErrorText(context);
           }
         },
       ),
